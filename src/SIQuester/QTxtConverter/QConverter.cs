@@ -14,6 +14,8 @@ using System.Text.RegularExpressions;
 
 namespace QTxtConverter;
 
+#nullable disable warnings
+
 /// <summary>
 /// Performs all operations related to text import.
 /// </summary>

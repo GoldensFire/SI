@@ -12,7 +12,10 @@ internal static class QuestionExtensions
     /// Detects whether the question has both content and a right answer filled in.
     /// </summary>
     /// <param name="question">Question to check.</param>
-    internal static bool IsFilled(this Question question) => HasContent(question) && question.HasAnswer();
+    internal static bool IsFilled(this Question question) => IsNormallyEmpty(question) || HasContent(question) && question.HasAnswer();
+
+    private static bool IsNormallyEmpty(this Question question) =>
+        question.Price == Question.InvalidPrice || question.TypeName == QuestionTypes.SecretNoQuestion;
 
     /// <summary>
     /// Detects whether the question right answer is filled in.

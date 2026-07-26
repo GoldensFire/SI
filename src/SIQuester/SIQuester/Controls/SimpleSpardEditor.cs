@@ -7,6 +7,8 @@ using System.Windows.Media;
 
 namespace SIQuester;
 
+#nullable disable warnings
+
 public sealed class SimpleSpardEditor : RichTextBox
 {
     private Sequence? _rootExpression = null;

@@ -10,10 +10,10 @@ public sealed class SearchResult
     /// <summary>
     /// File name.
     /// </summary>
-    public string FileName { get; set; }
+    public required string FileName { get; set; }
 
     /// <summary>
     /// Found fragment with highlighted area.
     /// </summary>
-    public SearchMatch Fragment { get; set; }
+    public required SearchMatch Fragment { get; set; }
 }

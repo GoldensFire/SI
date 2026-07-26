@@ -1,7 +1,6 @@
 ﻿using SIQuester.Model;
-using SIQuester.ViewModel.PlatformSpecific;
+using SIQuester.ViewModel.Contracts;
 using SIQuester.ViewModel.Properties;
-using System;
 using System.Windows.Input;
 using Utils.Commands;
 
@@ -12,11 +11,13 @@ namespace SIQuester.ViewModel;
 /// </summary>
 public sealed class SettingsViewModel : WorkspaceViewModel
 {
+    private readonly IPlatformService _platformService;
+
     public ICommand Reset { get; private set; }
 
     public override string Header => Resources.Options;
 
-    public string[] Fonts => PlatformManager.Instance.FontFamilies;
+    public string[] Fonts => _platformService.FontFamilies;
 
     public bool SpellCheckingEnabled => Environment.OSVersion.Version > new Version(6, 2);
 
@@ -31,7 +32,11 @@ public sealed class SettingsViewModel : WorkspaceViewModel
     public string GPTPrompt => string.IsNullOrEmpty(Model.GPTPrompt)
         ? Resources.DefaultGPTPrompt : Model.GPTPrompt;
 
-    public SettingsViewModel() => Reset = new SimpleCommand(Reset_Executed);
+    public SettingsViewModel(IPlatformService platformService)
+    {
+        _platformService = platformService;
+        Reset = new SimpleCommand(Reset_Executed);
+    }
 
     private void Reset_Executed(object? arg) => AppSettings.Default.Reset();
 }

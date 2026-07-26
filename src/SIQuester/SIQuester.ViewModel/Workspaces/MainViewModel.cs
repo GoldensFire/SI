@@ -248,7 +248,7 @@ public sealed class MainViewModel : ModelViewBase, INotifyPropertyChanged
 
     private void SearchFolder_Executed(object? arg) => DocList.Add(new SearchFolderViewModel(this));
 
-    private void SetSettings_Executed(object? arg) => DocList.Add(new SettingsViewModel());
+    private void SetSettings_Executed(object? arg) => DocList.Add(new SettingsViewModel(_platformService));
 
     private void Help_Executed(object? arg) => _platformService.ShowHelp();
 

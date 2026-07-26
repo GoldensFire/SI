@@ -18,6 +18,8 @@ using Utils.Commands;
 
 namespace SIQuester.ViewModel;
 
+#nullable disable warnings
+
 // TODO: this class is too heavy. It requires refactoring
 
 /// <summary>

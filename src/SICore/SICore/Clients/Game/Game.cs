@@ -2217,7 +2217,6 @@ public sealed class Game : MessageHandler
 
                     _state.Players[i].AppellationFlag = false;
                     _state.AppellationAwaitedVoteCount--;
-                    _actions.SendMessageWithArgs(Messages.PersonApellated, i);
                     _actions.SendMessageWithArgs(Messages.PlayerState, PlayerState.HasAnswered, i);
                     break;
                 }
@@ -2468,8 +2467,6 @@ public sealed class Game : MessageHandler
             {
                 if (_state.Answerer != player)
                 {
-                    _actions.SendMessageWithArgs(Messages.WrongTry, i);
-                    
                     if (player.CanPress)
                     {
                         player.LastBadTryTime = DateTime.UtcNow;
